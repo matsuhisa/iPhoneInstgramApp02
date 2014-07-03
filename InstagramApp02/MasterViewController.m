@@ -4,6 +4,7 @@
 #import "MasterViewController.h"
 #import "DetailViewController.h"
 #import "PhotosManager.h"
+#import "PhotoListCell.h"
 
 @interface MasterViewController ()
 @end
@@ -24,7 +25,7 @@
 - (void)fetchData
 {
     // データー読み込み
-    NSString *_tags        = @"京都";
+    NSString *_tags        = @"ラーメン";
     NSString *tags         = [_tags stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
     NSString *base_url     = @"https://api.instagram.com/v1/tags/";
     NSString *access_token = @"228314.f59def8.b2923efc7b794cd080eb1ade6a329dd2";
@@ -93,11 +94,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    PhotoListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSDictionary *photo   = [PhotosManager sharedManager].photos[indexPath.row];
     
-    cell.textLabel.text       = photo[@"caption"][@"text"];
-    cell.detailTextLabel.text = photo[@"caption"][@"from"][@"full_name"];
+    cell.likeCount    = photo[@"likes"][@"count"];
+    cell.fullName     = photo[@"caption"][@"from"][@"full_name"];
+    cell.text         = photo[@"caption"][@"text"];
+    cell.mainImageUrl = photo[@"images"][@"standard_resolution"][@"url"];
+    cell.userImageUrl = photo[@"user"][@"profile_picture"];
+
     return cell;
 }
 

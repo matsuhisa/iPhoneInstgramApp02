@@ -24,6 +24,7 @@
 		B98665981963562900603269 /* InstagramApp02Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665971963562900603269 /* InstagramApp02Tests.m */; };
 		B98665A3196356BE00603269 /* PhotosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665A2196356BE00603269 /* PhotosManager.m */; };
 		B98665A61963571300603269 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665A51963571300603269 /* Photo.m */; };
+		B98665A919658C3000603269 /* PhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665A819658C3000603269 /* PhotoListCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,8 @@
 		B98665A2196356BE00603269 /* PhotosManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosManager.m; sourceTree = "<group>"; };
 		B98665A41963571300603269 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		B98665A51963571300603269 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		B98665A719658C3000603269 /* PhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListCell.h; sourceTree = "<group>"; };
+		B98665A819658C3000603269 /* PhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				B986657B1963562900603269 /* Main.storyboard */,
 				B986657E1963562900603269 /* MasterViewController.h */,
 				B986657F1963562900603269 /* MasterViewController.m */,
+				B98665A719658C3000603269 /* PhotoListCell.h */,
+				B98665A819658C3000603269 /* PhotoListCell.m */,
 				B98665811963562900603269 /* DetailViewController.h */,
 				B98665821963562900603269 /* DetailViewController.m */,
 				B98665841963562900603269 /* Images.xcassets */,
@@ -267,6 +272,7 @@
 				B98665A61963571300603269 /* Photo.m in Sources */,
 				B986657A1963562900603269 /* AppDelegate.m in Sources */,
 				B98665801963562900603269 /* MasterViewController.m in Sources */,
+				B98665A919658C3000603269 /* PhotoListCell.m in Sources */,
 				B98665A3196356BE00603269 /* PhotosManager.m in Sources */,
 				B98665761963562900603269 /* main.m in Sources */,
 				B98665831963562900603269 /* DetailViewController.m in Sources */,
