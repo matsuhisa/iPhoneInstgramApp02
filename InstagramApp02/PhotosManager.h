@@ -11,12 +11,8 @@
 
 + (PhotosManager *)sharedManager;
 
-//- (void)reloadPhotosWithBlock:(void (^)(NSError *error))block;
-
 // データーを数える
 - (NSUInteger)countOfList;
 
 // 指定のデーターを返す
-//- (Photo *)objectInListAtIndex:(NSIndexPath *)indexPath;
-
 @end

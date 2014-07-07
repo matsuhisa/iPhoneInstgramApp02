@@ -3,6 +3,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "TagsViewController.h"
 #import "PhotosManager.h"
 #import "PhotoListCell.h"
 
@@ -10,6 +11,25 @@
 @end
 
 @implementation MasterViewController
+
+// 巻き戻しセグエ
+// - タグ追加
+-(IBAction)tags:(UIStoryboardSegue *)segue
+{
+    if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
+        NSLog(@"-------------");
+        NSLog(@"巻き戻しセグエ");
+
+        TagsViewController *tagsViewController = [segue sourceViewController];
+        
+        if([tagsViewController.tag length] > 0)
+        {
+            NSLog(@"%@", tagsViewController.tag);
+            [self fetchData:tagsViewController.tag];
+        }
+        NSLog(@"-------------");
+    }
+}
 
 - (void)awakeFromNib
 {
@@ -19,13 +39,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self fetchData];
+    [self fetchData:@"ラーメン"];
 }
 
-- (void)fetchData
+- (void)fetchData:(NSString *)tag
 {
+    NSString *_tags = @"京都";
+    
     // データー読み込み
-    NSString *_tags        = @"ラーメン";
+    if([tag length] > 0)
+    {
+        _tags = tag;
+    }
+
+    NSLog(@"-------------");
+    NSLog(@"fetchData");
+    NSLog(@"%@",_tags);
+    NSLog(@"-------------");
+
     NSString *tags         = [_tags stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
     NSString *base_url     = @"https://api.instagram.com/v1/tags/";
     NSString *access_token = @"228314.f59def8.b2923efc7b794cd080eb1ade6a329dd2";
@@ -61,7 +92,10 @@
          // TableView をリロード
          // メインスレッドでやらないと最悪クラッシュする
          [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
-         [session invalidateAndCancel];
+         //[session invalidateAndCancel];
+         NSLog(@"-------------");
+         NSLog(@"NSURLSessionDataTask complete");
+         NSLog(@"-------------");
      }];
     
     // 通信開始
@@ -71,6 +105,9 @@
 // テーブルビューを再描画する
 - (void)reloadTableView
 {
+    NSLog(@"-------------");
+    NSLog(@"テーブルビューを再描画");
+    NSLog(@"-------------");
     [self.tableView reloadData];
 }
 
@@ -78,6 +115,22 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // データーの取得
+    NSDictionary *photo = [PhotosManager sharedManager].photos[indexPath.row];
+    
+    // セルの生成
+    PhotoListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.likeCount    = photo[@"likes"][@"count"];
+    cell.fullName     = photo[@"caption"][@"from"][@"full_name"];
+    cell.text         = photo[@"caption"][@"text"];
+    cell.mainImageUrl = photo[@"images"][@"standard_resolution"][@"url"];
+    cell.userImageUrl = photo[@"user"][@"profile_picture"];
+
+    return cell;
 }
 
 //
@@ -91,21 +144,6 @@
 {
     return [[PhotosManager sharedManager] countOfList];
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    PhotoListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSDictionary *photo   = [PhotosManager sharedManager].photos[indexPath.row];
-    
-    cell.likeCount    = photo[@"likes"][@"count"];
-    cell.fullName     = photo[@"caption"][@"from"][@"full_name"];
-    cell.text         = photo[@"caption"][@"text"];
-    cell.mainImageUrl = photo[@"images"][@"standard_resolution"][@"url"];
-    cell.userImageUrl = photo[@"user"][@"profile_picture"];
-
-    return cell;
-}
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

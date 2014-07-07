@@ -25,6 +25,8 @@
 		B98665A3196356BE00603269 /* PhotosManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665A2196356BE00603269 /* PhotosManager.m */; };
 		B98665A61963571300603269 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665A51963571300603269 /* Photo.m */; };
 		B98665A919658C3000603269 /* PhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665A819658C3000603269 /* PhotoListCell.m */; };
+		B98665AC1966278700603269 /* TagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B98665AB1966278700603269 /* TagsViewController.m */; };
+		B9EAB84519685040002A2620 /* TagsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EAB84419685040002A2620 /* TagsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,10 @@
 		B98665A51963571300603269 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		B98665A719658C3000603269 /* PhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoListCell.h; sourceTree = "<group>"; };
 		B98665A819658C3000603269 /* PhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoListCell.m; sourceTree = "<group>"; };
+		B98665AA1966278700603269 /* TagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsViewController.h; sourceTree = "<group>"; };
+		B98665AB1966278700603269 /* TagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsViewController.m; sourceTree = "<group>"; };
+		B9EAB84319685040002A2620 /* TagsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsManager.h; sourceTree = "<group>"; };
+		B9EAB84419685040002A2620 /* TagsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,8 @@
 				B98665781963562900603269 /* AppDelegate.h */,
 				B98665791963562900603269 /* AppDelegate.m */,
 				B986657B1963562900603269 /* Main.storyboard */,
+				B98665AA1966278700603269 /* TagsViewController.h */,
+				B98665AB1966278700603269 /* TagsViewController.m */,
 				B986657E1963562900603269 /* MasterViewController.h */,
 				B986657F1963562900603269 /* MasterViewController.m */,
 				B98665A719658C3000603269 /* PhotoListCell.h */,
@@ -136,6 +144,8 @@
 				B98665841963562900603269 /* Images.xcassets */,
 				B98665701963562900603269 /* Supporting Files */,
 				B98665A1196356BE00603269 /* PhotosManager.h */,
+				B9EAB84319685040002A2620 /* TagsManager.h */,
+				B9EAB84419685040002A2620 /* TagsManager.m */,
 				B98665A2196356BE00603269 /* PhotosManager.m */,
 				B98665A41963571300603269 /* Photo.h */,
 				B98665A51963571300603269 /* Photo.m */,
@@ -269,11 +279,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9EAB84519685040002A2620 /* TagsManager.m in Sources */,
 				B98665A61963571300603269 /* Photo.m in Sources */,
 				B986657A1963562900603269 /* AppDelegate.m in Sources */,
 				B98665801963562900603269 /* MasterViewController.m in Sources */,
 				B98665A919658C3000603269 /* PhotoListCell.m in Sources */,
 				B98665A3196356BE00603269 /* PhotosManager.m in Sources */,
+				B98665AC1966278700603269 /* TagsViewController.m in Sources */,
 				B98665761963562900603269 /* main.m in Sources */,
 				B98665831963562900603269 /* DetailViewController.m in Sources */,
 			);
@@ -480,6 +492,7 @@
 				B986659D1963562900603269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B986659E1963562900603269 /* Build configuration list for PBXNativeTarget "InstagramApp02Tests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +501,7 @@
 				B98665A01963562900603269 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
