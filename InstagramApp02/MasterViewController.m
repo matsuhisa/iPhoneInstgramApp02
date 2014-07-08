@@ -17,17 +17,16 @@
 -(IBAction)tags:(UIStoryboardSegue *)segue
 {
     if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
-        NSLog(@"-------------");
-        NSLog(@"巻き戻しセグエ");
-
         TagsViewController *tagsViewController = [segue sourceViewController];
         
         if([tagsViewController.tag length] > 0)
         {
+            NSLog(@"-------------");
             NSLog(@"%@", tagsViewController.tag);
+            NSLog(@"-------------");
             [self fetchData:tagsViewController.tag];
         }
-        NSLog(@"-------------");
+
     }
 }
 

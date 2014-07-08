@@ -8,19 +8,6 @@
 
 @implementation TagsViewController
 
-/*
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-
-}
-*/
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,17 +21,12 @@
 // マスターに送信する
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ReturnInput"]) {
-        NSLog(@"-----------");
-        NSLog(@"マスターに送る");
-
         if([self.InputTag.text length] > 0)
         {
             _tag = self.InputTag.text;
         }else{
             _tag = @"寿司";
         }
-        NSLog(@"%@",self.InputTag.text);
-        NSLog(@"-----------");
     }
 }
 
@@ -52,14 +34,8 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // sefl.sectionList などで管理するのがいい
-    return 2;
-}
-
-// セクション毎のタイトル
-// - いらなければとる
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [NSString stringWithFormat:@"%d 番目のセクション", section];
+    //return 2;
+    return 0;
 }
 
 // セクションごとに生成するセルの数
@@ -70,11 +46,22 @@
     return 1;
 }
 
+// セクション毎のタイトル
+// - いらなければとる
+/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [NSString stringWithFormat:@"%d 番目のセクション", section];
+}
+*/
+
+
 // セルの生成
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    
+    cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+/*
     if (indexPath.section==0)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"InputCell" forIndexPath:indexPath];
@@ -84,11 +71,10 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"historyCell" forIndexPath:indexPath];
     }
-
+*/
     return cell;
 }
-- (IBAction)DoneTag:(UIButton *)sender {
-}
+
 - (IBAction)TagDone:(id)sender {
 }
 @end
