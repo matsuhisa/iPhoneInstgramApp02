@@ -2,6 +2,8 @@
 //  InstagramApp02
 
 #import "TagsViewController.h"
+#import "TagsManager.h"
+#import "Tag.h"
 
 @interface TagsViewController ()
 @end
@@ -30,51 +32,61 @@
     }
 }
 
-// テーブル全体のセクションの数
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // sefl.sectionList などで管理するのがいい
-    //return 2;
-    return 0;
-}
 
 // セクションごとに生成するセルの数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // セクションごとに設定する事も可能
-    // section で判別する
-    return 1;
+    return [self.tags count];
+    //return 3;
+    //return [self.tagsManager countOfList];
 }
-
-// セクション毎のタイトル
-// - いらなければとる
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [NSString stringWithFormat:@"%d 番目のセクション", section];
-}
-*/
-
 
 // セルの生成
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-/*
-    if (indexPath.section==0)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"InputCell" forIndexPath:indexPath];
-    }
-    
-    if (indexPath.section==1)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"historyCell" forIndexPath:indexPath];
-    }
-*/
+
+    NSString *saveTag = [self.tags objectAtIndex:indexPath.row];
+    cell.textLabel.text = saveTag;
+
+    //Tag *tag = [self.tagsManager objectInListAtIndex:indexPath.row];
+    //cell.textLabel.text = tag.label;
+    //cell.textLabel.text = @"テストです";
     return cell;
 }
 
-- (IBAction)TagDone:(id)sender {
+- (void)setTags:(NSMutableArray *)newTags
+{
+    NSLog(@"------------");
+    NSLog(@"setTags");
+    NSLog(@"------------");
+    if(_tags != newTags)
+    {
+        _tags = newTags;
+    }
+    [self.TagHistory reloadData];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"------------");
+    NSLog(@"viewWillAppear");
+    NSLog(@"------------");
+    [super viewWillAppear:animated];
+    [self.TagHistory reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"------------");
+    NSLog(@"viewWillDisappear");
+    NSLog(@"------------");
+    [super viewWillDisappear:animated];
+}
+
+- (IBAction)TagDone:(id)sender
+{
+}
+
 @end

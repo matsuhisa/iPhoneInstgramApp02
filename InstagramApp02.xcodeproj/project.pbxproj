@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B92EC101196C402300BA205D /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = B92EC100196C402300BA205D /* Tag.m */; };
 		B986656A1963562900603269 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B98665691963562900603269 /* Foundation.framework */; };
 		B986656C1963562900603269 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B986656B1963562900603269 /* CoreGraphics.framework */; };
 		B986656E1963562900603269 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B986656D1963562900603269 /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B92EC0FF196C402300BA205D /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		B92EC100196C402300BA205D /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		B98665661963562900603269 /* InstagramApp02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramApp02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B98665691963562900603269 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B986656B1963562900603269 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,6 +149,8 @@
 				B98665A1196356BE00603269 /* PhotosManager.h */,
 				B9EAB84319685040002A2620 /* TagsManager.h */,
 				B9EAB84419685040002A2620 /* TagsManager.m */,
+				B92EC0FF196C402300BA205D /* Tag.h */,
+				B92EC100196C402300BA205D /* Tag.m */,
 				B98665A2196356BE00603269 /* PhotosManager.m */,
 				B98665A41963571300603269 /* Photo.h */,
 				B98665A51963571300603269 /* Photo.m */,
@@ -283,6 +288,7 @@
 				B98665A61963571300603269 /* Photo.m in Sources */,
 				B986657A1963562900603269 /* AppDelegate.m in Sources */,
 				B98665801963562900603269 /* MasterViewController.m in Sources */,
+				B92EC101196C402300BA205D /* Tag.m in Sources */,
 				B98665A919658C3000603269 /* PhotoListCell.m in Sources */,
 				B98665A3196356BE00603269 /* PhotosManager.m in Sources */,
 				B98665AC1966278700603269 /* TagsViewController.m in Sources */,

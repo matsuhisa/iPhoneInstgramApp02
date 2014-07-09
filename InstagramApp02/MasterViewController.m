@@ -8,9 +8,25 @@
 #import "PhotoListCell.h"
 
 @interface MasterViewController ()
+- (void)initializeTags;
 @end
 
 @implementation MasterViewController
+
+// 初期化の実行
+- (id)init {
+    if (self = [super init]) {
+        [self initializeTags];
+        return self;
+    }
+    return nil;
+}
+
+- (void)initializeTags
+{
+    NSMutableArray *tempTags = [[NSMutableArray alloc] init];
+    self.tags = tempTags;
+}
 
 // 巻き戻しセグエ
 // - タグ追加
@@ -21,18 +37,17 @@
         
         if([tagsViewController.tag length] > 0)
         {
-            NSLog(@"-------------");
-            NSLog(@"%@", tagsViewController.tag);
-            NSLog(@"-------------");
+            [self.tags addObject:tagsViewController.tag];
+            NSLog(@"%lu", (unsigned long)[self.tags count]);
             [self fetchData:tagsViewController.tag];
         }
-
     }
 }
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self initializeTags];
 }
 
 - (void)viewDidLoad
@@ -41,19 +56,17 @@
     [self fetchData:@"ラーメン"];
 }
 
+// データー読み込み
 - (void)fetchData:(NSString *)tag
 {
     NSString *_tags = @"京都";
-    
-    // データー読み込み
     if([tag length] > 0)
     {
         _tags = tag;
     }
 
     NSLog(@"-------------");
-    NSLog(@"fetchData");
-    NSLog(@"%@",_tags);
+    NSLog(@"fetchData -> %@",_tags);
     NSLog(@"-------------");
 
     NSString *tags         = [_tags stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet alphanumericCharacterSet]];
@@ -92,9 +105,6 @@
          // メインスレッドでやらないと最悪クラッシュする
          [self performSelectorOnMainThread:@selector(reloadTableView) withObject:nil waitUntilDone:YES];
          //[session invalidateAndCancel];
-         NSLog(@"-------------");
-         NSLog(@"NSURLSessionDataTask complete");
-         NSLog(@"-------------");
      }];
     
     // 通信開始
@@ -104,9 +114,6 @@
 // テーブルビューを再描画する
 - (void)reloadTableView
 {
-    NSLog(@"-------------");
-    NSLog(@"テーブルビューを再描画");
-    NSLog(@"-------------");
     [self.tableView reloadData];
 }
 
@@ -147,6 +154,15 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    }
+
+    if ([[segue identifier] isEqualToString:@"showTags"]) {
+        TagsViewController *tagsViewController = [segue destinationViewController];
+        [tagsViewController setTags:self.tags];
+        NSLog(@"-------------");
+        NSLog(@"showTags");
+        NSLog(@"-------------");
+
     }
 }
 
